@@ -115,7 +115,7 @@ class ResourceFilters extends HTMLElement {
     const filtersEvent = new CustomEvent(
       'resource-filters-changed',
       {
-        details: filters,
+        detail: filters,
         bubbles: true,
         composed: true,
       }
