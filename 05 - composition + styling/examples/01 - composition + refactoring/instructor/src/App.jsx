@@ -2,27 +2,21 @@ import Header from './components/Header';
 import Filters from './components/Filters';
 import Results from './components/Results';
 import Details from './components/Details';
+import PageLayout from './components/layout/PageLayout';
 
 import { resources } from './data/resources';
 
 import './App.css';
 
 function App() {
+  {/* N. B. This is more so an instructional example of columnar widths rather than trying to make things look good! */}
   return (
-    <>
-      <Header tagline="Find the right resources, right away" />
-      <div className="flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:items-stretch">
-        <div className="w-full">
-          <Filters />
-        </div>
-        <div className="w-full">
-          <Results resources={resources} />
-        </div>
-        <div className="w-full">
-          <Details />
-        </div>
-      </div>
-    </>
+    <PageLayout
+      header={<Header tagline="Find the right resources, right away" />}
+      left={<Filters />}
+      middle={<Results resources={resources} />}
+      right={<Details />}
+    />
   );
 }
 
