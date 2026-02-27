@@ -7,13 +7,13 @@ import PageLayout from './components/layout/PageLayout';
 function App() {
   return (
     <PageLayout header={<Header tagline="Find the right resources, right away" />}>
-      <aside className="md:col-span-3">
+      <aside className="md:col-span-3 lg:col-span-1">
         <Filters />
       </aside>
-      <aside className="md:col-span-2">
+      <aside className="md:col-span-2 lg:col-span-1">
         <Results />
       </aside>
-      <aside className="md:col-span-1">
+      <aside className="md:col-span-1 lg:col-span-1">
         <Details />
       </aside>
     </PageLayout>
