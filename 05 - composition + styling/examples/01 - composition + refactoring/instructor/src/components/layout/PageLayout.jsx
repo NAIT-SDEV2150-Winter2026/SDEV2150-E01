@@ -1,4 +1,4 @@
-export default function PageLayout({ header, left, middle, right }) {
+export default function PageLayout({ header, children }) {
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="border-b bg-white px-6 py-4">
@@ -6,10 +6,7 @@ export default function PageLayout({ header, left, middle, right }) {
       </header>
 
       <main className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 py-6 md:grid-cols-3">
-        <aside>{left}</aside>
-        {/* N. B. This looks grody, but it's meant as an instructional example of rows & column widths */}
-        <section className="md:col-span-2">{middle}</section>
-        <aside>{right}</aside>
+        {children}
       </main>
     </div>
   );
