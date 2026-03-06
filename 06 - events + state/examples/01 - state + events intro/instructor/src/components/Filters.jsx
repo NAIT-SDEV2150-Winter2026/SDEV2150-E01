@@ -8,6 +8,8 @@ export default function Filters() {
 
   const [searchText, setSearchText] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [openNow, setOpenNow] = useState(false);
+  const [virtual, setVirtual] = useState(false);
 
   function toggleCategory(category) {
     // we're going to do some slightly complex logic in our setter function
@@ -26,6 +28,10 @@ export default function Filters() {
         // otherwise, (it wasn't selected and now we're selecting it)
         // so just add it to the array of selected categories
         return [...existing, category]
+
+        // The big thing to note here is that state variables are immutable — you can't e.g.
+        // push or pop from an array if that's what's in state; you need to completely reconstruct
+        // the array (or whatever value you want to change the state to) and then pass that to the setter.
       }
     )
   }
@@ -75,15 +81,33 @@ export default function Filters() {
                 type="checkbox"
                 id="openNow"
                 className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-500"
+                checked={openNow}
+                onChange={(e) => setOpenNow(event.target.checked)}
               />
               Open now
             </label>
+            {/* Conditional rendering, simple example:
+                
+                a) I can use && (AND) operator — basically, a more concise if statement —
+                   to only render something if a condition passess. We'd use this in cases
+                   where we don't need/want anything to happen if the check fails.
+                     e.g. deliveryChecked && renderDeliveryForm()
+
+                b) I can instead use a ternary (condition ? ifTruthy : ifFalsey) — basically,
+                   a more concise if-else — if I want specific things to happen/render for *either*
+                   a pass or a failure of the condition.
+                     e.g. deliveryChecked ? renderDeliveryForm() : renderPickupSelection()
+            */}
+            <p>Open now: {openNow ? 'Yes' : 'No'}</p>
+
 
             <label className="flex items-center gap-2 text-sm text-gray-700">
               <input
                 type="checkbox"
                 id="virtual"
                 className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-500"
+                checked={virtual}
+                onChange={(e) => setVirtual(event.target.checked)}
               />
               Virtual options
             </label>
