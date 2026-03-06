@@ -8,6 +8,7 @@ export default function Results({
   searchTerm,
   selectedCategories,
   openNow,
+  virtual,
 }) {
   // In this example starter, we've already implemented state here to track which item is selected.
 
@@ -19,6 +20,7 @@ export default function Results({
           const matchesSearch   = r.title.toLowerCase().includes(searchTerm.toLowerCase());
           const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(r.category.toLowerCase());
           const matchesOpenNow  = !openNow || r.openNow;
+          const matchesVirtual = !virtual || r.virtual;
           // Then return true or false as the result of this conditional expression if *all*
           // those checks match (I might have multiple filters being used at once).
           return matchesSearch && matchesCategory && matchesOpenNow

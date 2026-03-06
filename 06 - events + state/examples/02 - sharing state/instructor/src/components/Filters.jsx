@@ -7,6 +7,8 @@ export default function Filters({
   onCategoriesChange,
   openNow,
   onOpenNowChange,
+  virtual,
+  onVirtualChange,
 }) {
 
   function toggleCategory(category) {
@@ -90,6 +92,8 @@ export default function Filters({
                 type="checkbox"
                 id="virtual"
                 className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600 accent-sky-600"
+                onChange={(e) => onVirtualChange(e.target.checked)}
+                value={virtual}
               />
               Virtual options
             </label>
@@ -106,6 +110,7 @@ export default function Filters({
                 onSearchChange('');
                 onCategoriesChange([]);
                 onOpenNowChange(false);
+                onVirtualChange(false);
               }}
             >
               Reset

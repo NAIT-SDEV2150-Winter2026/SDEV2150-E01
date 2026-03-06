@@ -12,6 +12,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [openNow, setOpenNow] = useState(false);
+  const [virtual, setVirtual] = useState(false);
   const [selectedResource, setSelectedResource] = useState(null);
 
   return (
@@ -24,6 +25,8 @@ function App() {
           onCategoriesChange={setSelectedCategories}
           openNow={openNow}
           onOpenNowChange={setOpenNow}
+          virtual={openNow}
+          onVirtualChange={openNow}
         />
       </aside>
       <section className="md:col-span-2 lg:col-span-1">
