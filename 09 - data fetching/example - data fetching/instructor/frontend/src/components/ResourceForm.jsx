@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function ResourceForm({ initialData, isEditing, onSubmit, onReset }) {
+export default function ResourceForm({ initialData, isEditing }) {
   const [formData, setFormData] = useState(initialData);
 
   return (
