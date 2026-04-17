@@ -24,6 +24,15 @@ export default function ResourceForm({
     )
   }
 
+  function handleReset() {
+    if (isEditing) {
+      navigate('/admin') // make sure you put a leading slash to navigate from URL root
+      // without a leading slash, react-router *appends* the route to your current route
+    } else {
+      setFormData(initialData)
+    }
+  }
+
 
   return (
     <Form method="post" className="space-y-4">
@@ -131,17 +140,27 @@ export default function ResourceForm({
         Open now
       </label>
 
-      <button
-        type="submit"
-        className="rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700"
-        disabled={isSubmitting}
-      >
-        {isSubmitting
-          ? 'Saving...'
-          : isEditing
-            ? 'Update Resource'
-            : 'Add Resource'}
-      </button>
+      <div className="flex gap-2">
+        <button
+          type="button"
+          className="rounded border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+          onClick={handleReset}
+        >
+          {isEditing ? 'Clear' : 'Reset'}
+        </button>
+
+        <button
+          type="submit"
+          className="rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700"
+          disabled={isSubmitting}
+        >
+          {isSubmitting
+            ? 'Saving...'
+            : isEditing
+              ? 'Update Resource'
+              : 'Add Resource'}
+        </button>
+      </div>
 
     </Form>
   );
